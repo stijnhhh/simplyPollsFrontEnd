@@ -1,21 +1,22 @@
-<div class="container">
+<div class="container" *ngIf="pollGebruiker">
     <div class="card kaartBreedte centreer mt-4">
         <div class="card-body row kaartInhoud">
             <div>
                 <div class="row">
-                    <h4 class="card-title">
+                    <h4 class="card-title centreer">
                         {{pollGebruiker.poll.naam}}
                     </h4>
                 </div>
                 <div class="row">
                     <div class="form-group">
                         <div class="checkbox" *ngFor="let ant of pollGebruiker.poll.antwoorden">
-                            <label><input type="checkbox" (change)="veranderStem(ant)">{{ant.antwoordPoll}}</label>
+                            <label><input type="checkbox" (change)="veranderStem(ant)" [checked]="stemmenIDLijst.includes(ant.antwoordID)">{{ant.antwoordPoll}} (stemmen: {{ant.stemmen.length}})</label>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <button class="btn btn-outline-danger mr-1" (click)="verwijderVerzoek(poll.pollGebruikerID)">verwijder poll</button>
+                  <button class="btn btn-outline-success ml-1" (click)="terugNaarDashboard()">Terug naar dashboard</button>
+                  <button class="btn btn-outline-success ml-1" (click)="bekijkResultaat()">Bekijk de resultaten</button>
                 </div>
             </div>
         </div>

@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   gebruikerID: number;
   ingelogd: boolean;
   navbarOpen: boolean;
+  aantalVerzoeken: number;
 
   constructor(private _aanmeldingsService: AanmeldingService, private router: Router, private _vriendService: VriendService)
   {
@@ -29,6 +30,16 @@ export class AppComponent implements OnInit {
     } else {
       this.gebruikerID = null;
     }
+
+    this._vriendService.getAantalVrienden().subscribe(result => {
+      if(result == null)
+      {
+        this.aantalVerzoeken = 0;
+      } else
+      {
+        this.aantalVerzoeken = result;
+      }
+    })
   }
 
   onLogout() {

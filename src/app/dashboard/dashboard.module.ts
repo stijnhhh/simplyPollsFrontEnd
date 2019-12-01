@@ -5,11 +5,11 @@ import { DashboardService } from './dashboard.service';
 import { ToevoegenPollComponent } from './toevoegen-poll/toevoegen-poll.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VriendenUitnodigenComponent } from './vrienden-uitnodigen/vrienden-uitnodigen.component';
-import { EigenPollsComponent } from './eigen-polls/eigen-polls.component';
 import { PollsComponent } from './polls/polls.component';
+import { ResultatenComponent } from './resultaten/resultaten.component';
 
 @NgModule({
-  declarations: [DashboardComponent, ToevoegenPollComponent, VriendenUitnodigenComponent, EigenPollsComponent, PollsComponent],
+  declarations: [DashboardComponent, ToevoegenPollComponent, VriendenUitnodigenComponent, PollsComponent, ResultatenComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -21,8 +21,8 @@ import { PollsComponent } from './polls/polls.component';
   exports: [
     DashboardComponent,
     ToevoegenPollComponent,
-    EigenPollsComponent,
-    PollsComponent
+    PollsComponent,
+    ResultatenComponent
   ]
 })
 export class DashboardModule { }

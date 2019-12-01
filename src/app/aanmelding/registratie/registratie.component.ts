@@ -41,7 +41,7 @@ export class RegistratieComponent implements OnInit {
     if(wachtwoord == controlWachtwoord)
     {
       this._aanmeldingService.maakGebruiker(new Gebruiker(0, email, wachtwoord, gebruikersnaam, null, null)).subscribe(result => {
-        console.log(result);
+        
         if(result == null)
         {
           this.message = "*Het opgegeven email adres bestaat al.*";

@@ -64,17 +64,17 @@ export class DashboardComponent implements OnInit {
     this.router.navigateByUrl("/vriendenToevoegen");
   }
 
-  naarEigenPoll(pollID: number)
+  naarPoll(pollID: number)
   {
     localStorage.setItem("poll", ""+pollID);
         
-    this.router.navigateByUrl("/eigenPolls");
+    this.router.navigateByUrl("/polls");
   }
 
   verwijderPoll(pollID: number)
   {
     this._dashboardService.verwijderPoll(pollID).subscribe(result => {
-      this.openModal(false)
+      this.openModal(true)
     });
   }
 }

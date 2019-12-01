@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EigenPollsComponent } from './eigen-polls.component';
+import { ResultatenComponent } from './resultaten.component';
 
-describe('EigenPollsComponent', () => {
-  let component: EigenPollsComponent;
-  let fixture: ComponentFixture<EigenPollsComponent>;
+describe('ResultatenComponent', () => {
+  let component: ResultatenComponent;
+  let fixture: ComponentFixture<ResultatenComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EigenPollsComponent ]
+      declarations: [ ResultatenComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EigenPollsComponent);
+    fixture = TestBed.createComponent(ResultatenComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

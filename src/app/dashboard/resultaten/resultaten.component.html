@@ -1,0 +1,34 @@
+<div class="container centreer">
+    <h2>
+        Resultaten
+    </h2>
+
+    <div class="card kaartBreedte centreer mt-4" *ngIf="pollGebruiker">
+        <div class="card-body row kaartInhoud">
+            <div>
+                <div class="row">
+                    <h4 class="card-title centreer">
+                        {{pollGebruiker.poll.naam}}, de antwoorden en bijhorende stemmers:
+                    </h4>
+                </div>
+                <div class="row">
+                    <ul>
+                        <li *ngFor="let ant of pollGebruiker.poll.antwoorden">
+                            <h3>
+                                {{ant.antwoordPoll}}
+                            </h3>
+                            <ol>
+                                <li *ngFor="let stem of ant.stemmen">
+                                    {{stem.gebruiker.gebruikersnaam}} ({{stem.gebruiker.email}})
+                                </li>
+                            </ol>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                  <button class="btn btn-outline-success ml-1 centreer" (click)="terugNaarDashboard()">Terug naar dashboard</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

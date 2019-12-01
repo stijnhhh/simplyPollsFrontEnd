@@ -16,7 +16,7 @@ import { VriendComponent } from './vriend/vriend/vriend.component';
 import { ToevoegenPollComponent } from './dashboard/toevoegen-poll/toevoegen-poll.component';
 import { VriendenUitnodigenComponent } from './dashboard/vrienden-uitnodigen/vrienden-uitnodigen.component';
 import { PollsComponent } from './dashboard/polls/polls.component';
-import { EigenPollsComponent } from './dashboard/eigen-polls/eigen-polls.component';
+import { ResultatenComponent } from './dashboard/resultaten/resultaten.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
@@ -27,7 +27,7 @@ const appRoutes: Routes = [
   { path: 'pollToevoegen', component: ToevoegenPollComponent},
   { path: 'vriendenToevoegen', component: VriendenUitnodigenComponent},
   { path: 'polls', component: PollsComponent},
-  { path: 'eigenPolls', component: EigenPollsComponent}
+  { path: 'resultaten', component: ResultatenComponent}
 ]
 
 @NgModule({

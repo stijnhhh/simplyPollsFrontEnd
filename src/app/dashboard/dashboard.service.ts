@@ -90,4 +90,11 @@ export class DashboardService {
       headers: new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem("token"))
     });
   }
+
+  getStemmen()
+  {
+    return this.http.get<Stem[]>("https://localhost:44363/api/Stem/getstemmen", {
+      headers: new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem("token"))
+    });
+  }
 }

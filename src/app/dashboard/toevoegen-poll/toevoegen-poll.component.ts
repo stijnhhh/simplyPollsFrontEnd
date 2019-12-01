@@ -21,7 +21,7 @@ export class ToevoegenPollComponent implements OnInit {
   ngOnInit() {
     this.pollForm = new FormGroup({
       naam: new FormControl('', {validators: [Validators.required, Validators.minLength(3)]}),
-      antwoord: new FormControl('', {validators: [Validators.required]})
+      antwoord: new FormControl('')
     });
 
     this.antwoorden = new Array<Antwoord>();
@@ -44,6 +44,8 @@ export class ToevoegenPollComponent implements OnInit {
   voegAntwoordToe()
   {
     this.antwoorden.push(new Antwoord(0, this.pollForm.value.antwoord, null, null));
+  
+    this.pollForm.controls['antwoord'].setValue("");
   }
 
   verwijderAntwoord(antwoord: Antwoord)
