@@ -1,0 +1,85 @@
+<div class="container centreer">
+    <div *ngIf="verzoeken">
+        <h3>
+            Voeg een vriend toe:
+        </h3>
+        <form (ngSubmit)="voegVriendToe()" [formGroup]="vriendForm" class="form-inline midden">
+              <div class="form-group centreer">
+                <label for="mail">E-mail:</label>
+                <input type="email" class="form-control" id="mail" placeholder="E-mail" formControlName="email"/>
+                <button type="submit" class="btn btn-outline-success" [disabled]="!vriendForm.valid">Voeg toe</button>
+              </div>
+        </form>
+            <h2>
+                Vriendschapsverzoeken:
+            </h2>
+            <div class="card kaartBreedte centreer mt-4" *ngFor="let verzoek of (verzoeken | async)">
+                <div class="card-body row kaartInhoud">
+                    <div class="col-6">
+                        <div class="row">
+                            <h4 class="card-title">
+                                {{verzoek.verzender.gebruikersnaam}}
+                            </h4>
+                        </div>
+                        <div class="row">
+                            <p>
+                                {{verzoek.verzender.email}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-2 rechts">
+                        <div class="row">
+                            <button class="btn btn-outline-success mb-2" (click)="voegVerzoekToe(verzoek)">toevoegen</button>
+                        </div>
+                        <div class="row">
+                            <button class="btn btn-outline-danger" (click)="verwijderVerzoek(verzoek)">verwijderen</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <div *ngIf="vrienden">
+        <h2>
+            Vrienden:
+        </h2>
+        <div class="card kaartBreedte centreer mt-4" *ngFor="let vriend of (vrienden)">
+            <div class="card-body row kaartInhoud">
+                <div class="col-4">
+                    <div class="row">
+                        <h4 class="card-title">
+                            {{vriend.gebruikersnaam}}
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <p>
+                            {{vriend.email}}
+                        </p>
+                    </div>
+                </div>
+                <div class="col-2 rechts">
+                    <div class="row">
+                        <button class="btn btn-outline-danger" (click)="verwijderVriend(vriend.gebruikerID)">verwijderen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal" class="modal fade" role="dialog" [ngStyle]="{'display': modalIsOpen ? 'block' : 'none', 'opacity': 1}">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">
+                {{bericht1}}
+              </h4>
+            </div>
+            <div class="modal-body">
+              {{bericht}}
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="btnClose" class="btn btn-outline-success" (click)="openModal(false)"><i class="fa fa-times fa-fw"></i>Sluit</button>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>

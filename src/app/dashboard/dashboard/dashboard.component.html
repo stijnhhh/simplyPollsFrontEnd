@@ -1,0 +1,93 @@
+<div class="container centreer">
+    <button type="button" class="btn btn-success mb-2" (click)="toPollToevoegen()">
+        Voeg een poll toe
+    </button>
+
+    <div *ngIf="pollVerzoeken">
+        <h3>
+            Verzoeken:
+        </h3>
+        <div class="card kaartBreedte centreer mt-4" *ngFor="let pollverzoek of (pollVerzoeken)">
+            <div class="card-body row kaartInhoud">
+                <div class="col-6">
+                    <div class="row">
+                        <h4 class="card-title">
+                            {{pollverzoek.poll.naam}}
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <p>
+                            Uitgenodigd door: {{pollverzoek.admin.gebruikersnaam}}
+                        </p>
+                    </div>
+                </div>
+                <div class="col-2 rechts">
+                    <div class="row">
+                        <button class="btn btn-outline-success mb-2" (click)='accepteerVerzoek(pollverzoek)'>accepteren</button>
+                    </div>
+                    <div class="row">
+                        <button class="btn btn-outline-danger" (click)='verwijderVerzoek(pollverzoek.pollGebruikerID)'>verwijderen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="eigenPolls">
+        <h3>
+            Jouw polls:
+        </h3>
+        <div class="card kaartBreedte centreer mt-4" *ngFor="let eigenPoll of eigenPolls">
+            <div class="card-body row kaartInhoud">
+                <div>
+                    <div class="row">
+                        <h4 class="card-title">
+                            {{eigenPoll.poll.naam}}
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <button class="btn btn-outline-danger mr-1" (click)="verwijderPoll(eigenPoll.poll.pollID)">Verwijder</button>
+                        <button class="btn btn-outline-success ml-1" (click)="nodigUit(eigenPoll.poll.pollID)">Nodig vrienden uit</button>
+                        <button class="btn btn-outline-success ml-1" (click)="naarEigenPoll(eigenPoll.poll.pollID)">Stem</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="polls">
+        <h3>
+            Overige polls:
+        </h3>
+        <div class="card kaartBreedte centreer mt-4" *ngFor="let poll of polls">
+            <div class="card-body row kaartInhoud">
+                <div>
+                    <div class="row">
+                        <h4 class="card-title">
+                            {{poll.poll.naam}}
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <button class="btn btn-outline-danger mr-1" (click)="verwijderVerzoek(poll.pollGebruikerID)">Verwijder</button>
+                        <button class="btn btn-outline-success ml-1" (click)="naarPoll(poll.poll.pollID)">Stem</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal" class="modal fade" role="dialog" [ngStyle]="{'display': modalIsOpen ? 'block' : 'none', 'opacity': 1}">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">
+                Poll Verwijderd
+              </h4>
+            </div>
+            <div class="modal-body">
+              De poll is succesvol verwijderd
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="btnClose" class="btn btn-outline-danger" (click)="openModal(false)"><i class="fa fa-times fa-fw"></i>Sluit</button>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>

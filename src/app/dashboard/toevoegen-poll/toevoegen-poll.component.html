@@ -1,0 +1,35 @@
+<div class="container centreer">
+  <form [formGroup]="pollForm">
+    <div class="form-group">
+      <label for="naam">Poll naam:</label>
+      <input type="text" class="form-control" id="naam" placeholder="Poll naam" formControlName="naam"/>
+    </div>
+    <div class="form-group">
+      <label for="antwoord">Antwoord:</label>
+      <input type="text" class="form-control" id="antwoord" placeholder="Antwoord" formControlName="antwoord"/>
+      <button class="btn btn-success mt-2" (click)="voegAntwoordToe()">Voeg antwoord toe</button>
+    </div>
+    <button type="submit" class="btn btn-outline-success" (click)="pollToevoegen()" [disabled]="!pollForm.valid">Voeg Poll Toe</button>
+  </form>
+  
+  <div></div>
+  <h3>
+    antwoorden:
+  </h3>
+  <div class="card kaartBreedte centreer mt-4" *ngFor="let antwoord of (antwoorden)">
+      <div class="card-body row kaartInhoud">
+          <div class="col-6">
+              <div class="row">
+                  <h4 class="card-title">
+                      {{antwoord.antwoordPoll}}
+                  </h4>
+              </div>
+          </div>
+          <div class="col-2 rechts">
+              <div class="row">
+                  <button class="btn btn-outline-danger " (click)="verwijderAntwoord(antwoord)">verwijderen</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

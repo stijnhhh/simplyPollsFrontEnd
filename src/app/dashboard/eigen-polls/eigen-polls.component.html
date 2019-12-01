@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="card kaartBreedte centreer mt-4">
+        <div class="card-body row kaartInhoud">
+            <div>
+                <div class="row">
+                    <h4 class="card-title">
+                        {{pollGebruiker.poll.naam}}
+                    </h4>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="checkbox" *ngFor="let ant of pollGebruiker.poll.antwoorden">
+                            <label><input type="checkbox" (change)="veranderStem(ant)">{{ant.antwoordPoll}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="btn btn-outline-danger mr-1" (click)="verwijderPoll(pollGebruiker.poll.pollID)">verwijder poll</button>
+                    <button class="btn btn-outline-success ml-1" (click)="nodigUit(pollGebruiker.poll.pollID)">nodig vrienden uit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal" class="modal fade" role="dialog" [ngStyle]="{'display': modalIsOpen ? 'block' : 'none', 'opacity': 1}">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">
+                Poll Verwijderd
+              </h4>
+            </div>
+            <div class="modal-body">
+              De poll is succesvol verwijderd
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="btnClose" class="btn btn-outline-danger" (click)="openModal(false)"><i class="fa fa-times fa-fw"></i>Sluit</button>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>

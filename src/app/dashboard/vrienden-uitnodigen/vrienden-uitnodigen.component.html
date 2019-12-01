@@ -1,0 +1,24 @@
+<div class="container centreer">
+    <h3>
+        Nodig je vrienden uit:
+    </h3>
+    <div class="card kaartBreedte centreer mt-4" *ngFor="let gebruiker of (gebruikers)">
+        <div class="card-body row kaartInhoud">
+            <div class="col-6">
+                <div class="row">
+                    <h4 class="card-title">
+                        {{gebruiker.gebruikersnaam}}
+                    </h4>
+                </div>
+            </div>
+            <div class="col-2 rechts">
+                <div class="row">
+                    <button class="btn btn-outline-success" (click)="nodigVriendUit(gebruiker)">Nodig uit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <button class="btn btn-success mt-3" (click)="keerterug()">Terug naar dashboard</button>
+    </div>
+</div>
